@@ -1,0 +1,53 @@
+<resources>
+
+  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+  <style name="MatchParent">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+  </style>
+
+  <style name="WrapContent">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <style name="WrapContentW">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">match_parent</item>
+  </style>
+
+  <style name="WrapContentH">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <style name="BtnVertical" parent="@style/Widget.AppCompat.Button.Colored">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">match_parent</item>
+  </style>
+
+  <style name="BtnHorizontal" parent="@style/Widget.AppCompat.Button.Colored">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <style name="TvDate" parent="WrapContent">
+    <item name="android:layout_gravity">center</item>
+    <item name="android:textSize">15sp</item>
+    <item name="android:textColor">@color/font_black_54</item>
+  </style>
+
+  <style name="TvPrice" parent="WrapContent">
+    <item name="android:layout_gravity">center</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:textColor">@color/font_black_60</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+
+</resources>

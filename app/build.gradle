@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+  compileSdkVersion 24
+  buildToolsVersion "23.0.3"
+  defaultConfig {
+    applicationId "com.petrulak.sample"
+    minSdkVersion 15
+    targetSdkVersion 24
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    buildConfigField "String", "BASE_URL", "\"https://blockchain.info\""
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+  sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+  }
+}
+
+repositories {
+  maven {
+    url 'http://dl.bintray.com/kotlin/kotlin-eap'
+  }
+}
+
+ext {
+  retrofitVersion   = '2.1.0'
+  rxJavaVersion     = '1.2.0'
+  rxAndroidVersion  = '1.2.1'
+  daggerVersion     = '2.7'
+  timberVersion     = '4.3.1'
+  stethoVersion     = '1.4.1'
+  supportVersion    = '24.2.1'
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+  compile "com.android.support:recyclerview-v7:$supportVersion"
+  compile "com.android.support:appcompat-v7:$supportVersion"
+
+  testCompile 'junit:junit:4.12'
+  androidTestCompile "com.android.support:support-annotations:$supportVersion"
+  androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+  androidTestCompile 'com.android.support.test:runner:0.5'
+
+  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+  //Upstream URL : https://github.com/square/retrofit
+  //License : Apache License 2.0
+  compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+  compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+  compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+
+  //Upstream URL : https://github.com/ReactiveX/RxJava
+  //License : Apache License 2.0
+  compile "io.reactivex:rxjava:$rxJavaVersion"
+  compile "io.reactivex:rxandroid:$rxAndroidVersion"
+
+  // License: Apache 2.0 License
+  // Upstream URL: https://github.com/square/dagger/
+  apt "com.google.dagger:dagger-compiler:$daggerVersion"
+  compile "com.google.dagger:dagger:$daggerVersion"
+
+  // Upstream URL: https://github.com/JakeWharton/timber
+  // License: Apache 2.0 License
+  compile "com.jakewharton.timber:timber:$timberVersion"
+
+  // Upstream URL: http://facebook.github.io/stetho/
+  // License: BSD
+  compile "com.facebook.stetho:stetho:$stethoVersion"
+  compile "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+
+  // Upstream URL: https://github.com/square/leakcanary
+  // License: Apache 2.0 License
+  // debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4'
+
+
+}
+

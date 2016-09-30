@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  style="@style/WrapContentH"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_gravity="center"
+  android:orientation="vertical"
+  android:padding="15dp">
+
+  <TextView
+    android:id="@+id/tvDate"
+    style="@style/TvDate"
+    tools:text="12/12/1989"/>
+
+  <TextView
+    android:id="@+id/tvPrice"
+    style="@style/TvPrice"
+    tools:text="15"/>
+
+</LinearLayout>

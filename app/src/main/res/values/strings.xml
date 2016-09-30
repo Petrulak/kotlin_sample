@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">Hello</string>
+  <string name="error_msg_general">Errorrrrrrrrrrrrrrrr</string>
+  <string name="_5days">15days</string>
+  <string name="_10days">30days</string>
+  <string name="_20days">60days</string>
+  <string name="_30days">90days</string>
+</resources>

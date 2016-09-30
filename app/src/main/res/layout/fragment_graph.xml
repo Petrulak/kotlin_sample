@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  style="@style/MatchParent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical">
+
+  <LinearLayout
+    style="@style/WrapContentH"
+    android:gravity="center"
+    android:orientation="horizontal">
+    <Button
+      android:id="@+id/btn1"
+      style="@style/BtnVertical"
+      android:text="@string/_5days"/>
+    <Button
+      android:id="@+id/btn2"
+      style="@style/BtnVertical"
+      android:text="@string/_10days"/>
+    <Button
+      android:id="@+id/btn3"
+      style="@style/BtnVertical"
+      android:text="@string/_20days"/>
+    <Button
+      android:id="@+id/btn4"
+      style="@style/BtnVertical"
+      android:text="@string/_30days"/>
+  </LinearLayout>
+
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/recyclerView"
+    style="@style/MatchParent"
+    android:scrollbars="vertical"/>
+
+</LinearLayout>
