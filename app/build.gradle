@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
   compileSdkVersion 24
@@ -30,6 +29,10 @@ repositories {
   maven {
     url 'http://dl.bintray.com/kotlin/kotlin-eap'
   }
+}
+
+kapt {
+  generateStubs = true
 }
 
 ext {
@@ -70,8 +73,8 @@ dependencies {
 
   // License: Apache 2.0 License
   // Upstream URL: https://github.com/square/dagger/
-  apt "com.google.dagger:dagger-compiler:$daggerVersion"
   compile "com.google.dagger:dagger:$daggerVersion"
+  kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
   // Upstream URL: https://github.com/JakeWharton/timber
   // License: Apache 2.0 License
