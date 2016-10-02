@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.petrulak.sample.R
 import com.petrulak.sample.domain.model.ModelData
 import com.petrulak.sample.util.Constants
+import com.petrulak.sample.util.extensions.isPortraitOrientation
 import com.petrulak.sample.util.extensions.onError
 import com.petrulak.sample.util.extensions.textAsString
 import com.petrulak.sample.util.rx.SafeObserver
@@ -23,10 +24,12 @@ class MainFragment : Fragment(), MainContract.View {
   private var presenter: MainContract.Presenter? = null
   private val subscriptions: CompositeSubscription
   private val adapter: MainAdapter
+  private val layoutManager: GridLayoutManager
 
   init {
     subscriptions = CompositeSubscription()
     adapter = MainAdapter()
+    layoutManager = GridLayoutManager(activity, Constants.NUM_GRID_PORTRAIT)
   }
 
   override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -47,7 +50,7 @@ class MainFragment : Fragment(), MainContract.View {
   }
 
   private fun initRecyclerView() {
-    recyclerView.layoutManager = GridLayoutManager(activity,3)
+    recyclerView.layoutManager = layoutManager
     recyclerView.adapter = adapter
   }
 
@@ -65,8 +68,9 @@ class MainFragment : Fragment(), MainContract.View {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    if (savedInstanceState != null && presenter != null) {
-      presenter!!.getData(savedInstanceState.getString(Constants.STATE_TEXT))
+    if (savedInstanceState != null) {
+      updateGridSize()
+      presenter?.getData(savedInstanceState.getString(Constants.STATE_TEXT))
     }
   }
 
@@ -102,6 +106,11 @@ class MainFragment : Fragment(), MainContract.View {
       adapter.items = list
       recyclerView.scrollToPosition(0)
     }
+  }
+
+  private fun updateGridSize() {
+    val gridSize = if (isPortraitOrientation()) Constants.NUM_GRID_PORTRAIT else Constants.NUM_GRID_LANDSCAPE
+    layoutManager.spanCount = gridSize
   }
 
   companion object {

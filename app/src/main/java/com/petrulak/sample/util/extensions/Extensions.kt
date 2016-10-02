@@ -1,5 +1,6 @@
 package com.petrulak.sample.util.extensions
 
+import android.content.res.Configuration
 import android.support.v4.app.Fragment
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
@@ -51,5 +52,10 @@ fun <T> RecyclerView.Adapter<*>.notifyNewData(oldList: List<T>, newList: List<T>
   })
 
   diff.dispatchUpdatesTo(this)
+}
+
+fun Fragment.isPortraitOrientation() : Boolean {
+  val orientation = resources.configuration.orientation
+  return if (orientation==Configuration.ORIENTATION_PORTRAIT) true else false
 }
 

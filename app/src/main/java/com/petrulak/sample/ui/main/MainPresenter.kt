@@ -18,7 +18,7 @@ class MainPresenter @Inject constructor(private val view: MainContract.View, pri
   private var actualPeriod: String
 
   init {
-    actualPeriod = ""
+    actualPeriod = String()
     subscriptions = CompositeSubscription()
     dataEmitter = PublishSubject.create<List<ModelData>>()
     view.setPresenter(this)
