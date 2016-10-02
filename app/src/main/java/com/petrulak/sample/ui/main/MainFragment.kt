@@ -30,7 +30,7 @@ class MainFragment : Fragment(), MainContract.View {
   }
 
   override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    return inflater!!.inflate(R.layout.fragment_graph, container, false)
+    return inflater?.inflate(R.layout.fragment_graph, container, false)
   }
 
   override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
@@ -40,10 +40,10 @@ class MainFragment : Fragment(), MainContract.View {
   }
 
   private fun initListeners() {
-    btn1.setOnClickListener { presenter!!.getData(btn1.textAsString()) }
-    btn2.setOnClickListener { presenter!!.getData(btn2.textAsString()) }
-    btn3.setOnClickListener { presenter!!.getData(btn3.textAsString()) }
-    btn4.setOnClickListener { presenter!!.getData(btn4.textAsString()) }
+    btn1.setOnClickListener { presenter?.getData(btn1.textAsString()) }
+    btn2.setOnClickListener { presenter?.getData(btn2.textAsString()) }
+    btn3.setOnClickListener { presenter?.getData(btn3.textAsString()) }
+    btn4.setOnClickListener { presenter?.getData(btn4.textAsString()) }
   }
 
   private fun initRecyclerView() {
@@ -53,9 +53,7 @@ class MainFragment : Fragment(), MainContract.View {
 
   override fun onResume() {
     super.onResume()
-    if (presenter != null) {
-      presenter!!.start()
-    }
+    presenter?.start()
   }
 
   override fun onDestroy() {
@@ -74,8 +72,8 @@ class MainFragment : Fragment(), MainContract.View {
 
   override fun onSaveInstanceState(outState: Bundle?) {
     super.onSaveInstanceState(outState)
-    if (outState != null && presenter != null) {
-      outState!!.putString(Constants.STATE_TEXT, presenter!!.getActualTimePeriod())
+    if (presenter != null) {
+      outState?.putString(Constants.STATE_TEXT, presenter?.getActualTimePeriod())
     }
   }
 
@@ -88,7 +86,7 @@ class MainFragment : Fragment(), MainContract.View {
   }
 
   override fun subscribeToNewGraphData(observableList: Observable<List<ModelData>>) {
-    var subscription = observableList
+    val subscription = observableList
       .subscribeOn(Schedulers.io())
       .observeOn(AndroidSchedulers.mainThread())
       .subscribe(object : SafeObserver<List<ModelData>>() {
